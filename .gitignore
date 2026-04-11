@@ -1,18 +1,24 @@
-# Compiled class file
+# --- Java & IDE Compiles ---
 *.class
-.classpath
-bin/*.class
-
-# Log file
+bin/
+out/
 *.log
-
-# BlueJ files
 *.ctxt
-
-# Mobile Tools for Java (J2ME)
 .mtj.tmp/
+hs_err_pid*
 
-# Package Files #
+# --- IntelliJ IDEA ---
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# --- Eclipse ---
+.settings/
+.project
+.classpath
+
+# --- Package Files ---
 *.jar
 *.war
 *.ear
@@ -20,114 +26,11 @@ bin/*.class
 *.tar.gz
 *.rar
 
-#Eclipse
-.settings/
-.project
-.classpath
-.settings/
+# --- Build Tools (Maven/Gradle) ---
+target/
+.gradle/
+build/
 
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-Contact GitHub API Training Shop Blog About
-/bin/
-/bin/
-
-
-
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
-/bin/
+# --- Operating System Junk ---
+.DS_Store
+Thumbs.db
