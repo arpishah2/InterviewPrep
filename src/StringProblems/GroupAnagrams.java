@@ -31,6 +31,9 @@ public class GroupAnagrams {
     Two strings are anagrams if and only if their sorted strings are equal.
     Maintain a map ans: {String -> List} where each key K is a sorted string, and each value is the list of strings
     from the initial input that when sorted, are equal to K.
+    Time Complexity: O(NKlogK), where N is the length of strs, and K is the maximum length of a string in strs.
+    complexity O(N) as we iterate through each string. Then, we sort each string in O(KlogK) time.
+    Space Complexity: O(NK), the total information content stored in ans.
      */
     public List<List<String>> groupAnagrams_UsingStringReversal(String[] inputStrings) {
 
@@ -53,6 +56,8 @@ public class GroupAnagrams {
     /*
     Two strings are anagrams if and only if their character counts (respective number of occurrences of each character) are the same.
     For example, abbccc will be #1#2#3#0#0#0...#0 where there are 26 entries total.
+    Time Complexity: O(NK), where N is the length of strs, and K is the maximum length of a string in strs
+    Space Complexity: O(NK), the total information content stored in ans.
      */
     public List<List<String>> groupAnagrams_UsingHash(String[] inputStrings) {
 
