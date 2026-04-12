@@ -1,4 +1,4 @@
-package Arrays;
+package Arrays.NumberSum;
 
 
 import java.util.*;
@@ -37,17 +37,17 @@ import java.util.*;
  * 3 <= nums.length <= 3000
  * -105 <= nums[i] <= 105
  */
-public class ThreeSumProblem {
+public class ThreeSum {
 
     int[] input;
     int target;
 
-    public ThreeSumProblem() {
+    public ThreeSum() {
         input = new int[0];
         target = 0;
     }
 
-    public ThreeSumProblem(int[] inp, int target) {
+    public ThreeSum(int[] inp, int target) {
         this.input = inp;
         this.target = target;
     }
@@ -93,7 +93,7 @@ public class ThreeSumProblem {
         Set<List<Integer>> res = new HashSet<>();
 
         for (int i = 0; i < nums.length && nums[i] <= 0; i++) {
-            twoSumII(nums, i, res);
+            twoSumWithSortedArray(nums, i, res);
         }
 
         return new ArrayList<>(res);
@@ -107,7 +107,7 @@ public class ThreeSumProblem {
      * @param i      - the index of the first element of the potential triplet
      * @param result - the Set used to store unique triplets found
      */
-    void twoSumII(int[] nums, int i, Set<List<Integer>> result) {
+    void twoSumWithSortedArray(int[] nums, int i, Set<List<Integer>> result) {
 
         int lo = i + 1;
         int high = nums.length - 1;
@@ -162,13 +162,13 @@ public class ThreeSumProblem {
     public static void main(String[] args) {
         int[] input = {2, 0, 6, 7, 15};
         int target = 17;
-        ThreeSumProblem tsp = new ThreeSumProblem(input, target);
+        ThreeSum tsp = new ThreeSum(input, target);
         int res0[] = tsp.threeSumBruteForce(tsp.input, tsp.target);
         System.out.println(res0[0] + " " + res0[1] + " " + res0[2]);
 
         //---
 
-        ThreeSumProblem sol = new ThreeSumProblem();
+        ThreeSum sol = new ThreeSum();
         runTest(sol, 1, new int[]{-1, 0, 1, 2, -1, -4}, 2);
         runTest(sol, 2, new int[]{-100, -70, -60, 110, 120, 130, 160}, 2);
         runTest(sol, 3, new int[]{0, 0, 0, 0}, 1);
@@ -177,7 +177,7 @@ public class ThreeSumProblem {
 
     }
 
-    private static void runTest(ThreeSumProblem sol, int testNum, int[] input, int expectedSize) {
+    private static void runTest(ThreeSum sol, int testNum, int[] input, int expectedSize) {
         List<List<Integer>> result = sol.threeSum(input);
         boolean passed = result.size() == expectedSize;
 

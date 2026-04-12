@@ -1,4 +1,4 @@
-package Arrays;
+package Arrays.NumberSum;
 
 import java.util.Arrays;
 

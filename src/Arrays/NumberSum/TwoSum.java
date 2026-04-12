@@ -1,4 +1,4 @@
-package Arrays;/*
+package Arrays.NumberSum;/*
  * 2SUM Problem: 
  * Given an array of integers a[] and a target sum T, find two indices (i and j) such that a[i] + a[j] adds up to T. 
  * Return both the indices
@@ -11,16 +11,16 @@ package Arrays;/*
 import java.util.Arrays;
 import java.util.Hashtable;
 
-public class TwoSumProblem {
+public class TwoSum {
     int[] input;
     int target;
 
-    public TwoSumProblem() {
+    public TwoSum() {
         input = new int[0];
         target = 0;
     }
 
-    public TwoSumProblem(int[] inp, int target) {
+    public TwoSum(int[] inp, int target) {
         this.input = inp;
         this.target = target;
     }
@@ -28,7 +28,7 @@ public class TwoSumProblem {
     public static void main(String[] args) {
         int[] input = {2, 0, 6, 7, 15};
         int target = 2;
-        TwoSumProblem tsp = new TwoSumProblem(input, target);
+        TwoSum tsp = new TwoSum(input, target);
         int res1[] = tsp.twoSumBest(tsp.input, tsp.target);
         int res2[] = tsp.twoSumAverage(tsp.input, tsp.target);
         int res3[] = tsp.twoSumBruteForce(tsp.input, tsp.target);
@@ -40,7 +40,7 @@ public class TwoSumProblem {
     }
 
     /**
-     * @param input  - input array
+     * @param input1  - input array
      * @param target - target sum to be achieved
      * @return - array of int containing the index position of the numbers which sum upto target
      * @complexity - T: O(n), S:O(n)

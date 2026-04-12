@@ -1,4 +1,4 @@
-package Arrays;
+package Arrays.NumberSum;
 
 
 import java.util.Arrays;
@@ -34,7 +34,7 @@ import java.util.Arrays;
  * - -1000 <= target <= 1000
  */
 
-public class TwoSumSortedArrayProblem {
+public class TwoSumSortedArray {
 
     /**
      * ⚡ ALGORITHM: Two-Pointer Technique (Two Sum II)
@@ -93,7 +93,7 @@ public class TwoSumSortedArrayProblem {
     }
 
     public static void main(String[] args) {
-        TwoSumSortedArrayProblem sol = new TwoSumSortedArrayProblem();
+        TwoSumSortedArray sol = new TwoSumSortedArray();
 
         // Example 1: Basic positive numbers
         test("Basic Example", new int[]{2, 7, 11, 15}, 9, new int[]{1, 2}, sol);
@@ -111,7 +111,7 @@ public class TwoSumSortedArrayProblem {
         test("Same Values", new int[]{0, 0, 3, 4}, 0, new int[]{1, 2}, sol);
     }
 
-    private static void test(String name, int[] numbers, int target, int[] expected, TwoSumSortedArrayProblem sol) {
+    private static void test(String name, int[] numbers, int target, int[] expected, TwoSumSortedArray sol) {
         int[] result = sol.twoSumSortedInput(numbers, target);
         boolean passed = Arrays.equals(result, expected);
 
