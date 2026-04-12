@@ -69,7 +69,7 @@ public class TwoSumProblem {
     }
 
     /**
-     * @param input  - input array
+     * @param input1  - input array
      * @param target - target sum to be achieved
      * @return - array of int containing the index position of the numbers which sum upto target
      * @complexity - O(n log n)
