@@ -166,7 +166,6 @@ public class ThreeSumProblem {
         int res0[] = tsp.threeSumBruteForce(tsp.input, tsp.target);
         System.out.println(res0[0] + " " + res0[1] + " " + res0[2]);
 
-
         //---
 
         ThreeSumProblem sol = new ThreeSumProblem();
