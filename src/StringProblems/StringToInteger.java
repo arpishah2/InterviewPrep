@@ -191,6 +191,88 @@ public class StringToInteger {
          */
     }
 
+    /**
+     * ⚡ ALGORITHM: String to Integer (myAtoi) - Constant Space Version
+     *
+     * 1. INITIALIZE: Set 'sign' to 1 and 'result' to 0. Use an 'index' pointer to
+     *    traverse the string manually to avoid creating new string objects.
+     *
+     * 2. SKIP WHITESPACE: Increment the 'index' as long as the current character
+     *    is a space (' ') and we haven't reached the end of the string.
+     *
+     * 3. SIGN DETECTION:
+     *    - If the char at 'index' is '+', set sign to 1 and move to next char.
+     *    - If the char at 'index' is '-', set sign to -1 and move to next char.
+     *    - Note: Only one sign is allowed; any second sign will break the digit loop.
+     *
+     * 4. CONVERSION LOOP: Iterate while the 'index' points to a digit (0-9).
+     *    - Extract digit using ASCII math: (input.charAt(index) - '0').
+     *
+     * 5. PROACTIVE OVERFLOW CHECK:
+     *    Before updating result, check if (result * 10 + digit) will exceed 32-bit limits:
+     *    - If result > MAX/10: Overflow is guaranteed.
+     *    - If result == MAX/10: Overflow occurs if the next digit is > 7 (MAX % 10).
+     *    - Return Integer.MAX_VALUE or Integer.MIN_VALUE immediately if violated.
+     *
+     * 6. FINAL RESULT: Multiply the accumulated 'result' by 'sign' and return.
+     *
+     * -------------------------------------------------------------------------
+     * 📊 COMPLEXITY ANALYSIS:
+     *
+     * TIME COMPLEXITY: O(N)
+     * - We traverse the string once from left to right. Each character is
+     *   visited exactly once by the 'index' pointer.
+     *
+     * SPACE COMPLEXITY: O(1)
+     * - Unlike using .trim() or .substring(), this approach uses only a few
+     *   integer variables (index, sign, result). No new string copies are
+     *   created, making it highly memory-efficient.
+     * -------------------------------------------------------------------------
+     */
+    public int myAtoiConstantSpace(String input) {
+        int sign = 1;
+        int result = 0;
+        int index = 0;
+        int n = input.length();
+
+        // Discard all spaces from the beginning of the input string.
+        while (index < n && input.charAt(index) == ' ') {
+            index++;
+        }
+
+        // sign = +1, if it's positive number, otherwise sign = -1.
+        if (index < n && input.charAt(index) == '+') {
+            sign = 1;
+            index++;
+        } else if (index < n && input.charAt(index) == '-') {
+            sign = -1;
+            index++;
+        }
+
+        // Traverse next digits of input and stop if it is not a digit
+        while (index < n && Character.isDigit(input.charAt(index))) {
+            int digit = input.charAt(index) - '0';
+
+            // Check overflow and underflow conditions.
+            if (
+                    (result > Integer.MAX_VALUE / 10) ||
+                            (result == Integer.MAX_VALUE / 10 &&
+                                    digit > Integer.MAX_VALUE % 10)
+            ) {
+                // If integer overflowed return 2^31-1, otherwise if underflowed return -2^31.
+                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
+
+            // Append current digit to the result.
+            result = 10 * result + digit;
+            index++;
+        }
+
+        // We have formed a valid number without any overflow/underflow.
+        // Return it after multiplying it with its sign.
+        return sign * result;
+    }
+
 
     public static void main(String[] args) {
         StringToInteger sol = new StringToInteger();
@@ -212,6 +294,28 @@ public class StringToInteger {
         test("Large Positive", "91283472332", sol.myAtoi("91283472332"), Integer.MAX_VALUE);
         test("Large Negative", "-91283472332", sol.myAtoi("-91283472332"), Integer.MIN_VALUE);
         test("Beyond Long Capacity", "20000000000000000000", sol.myAtoi("20000000000000000000"), Integer.MAX_VALUE);
+
+
+
+        // Test secomd algo with constant space
+
+        // Standard cases
+        test("Basic Positive", "42", sol.myAtoiConstantSpace("42"), 42);
+        test("Leading Spaces", "   -42", sol.myAtoiConstantSpace("   -42"), -42);
+
+        // Mixed alpha-numeric
+        test("Middle Garbage", "1337c0d3", sol.myAtoiConstantSpace("1337c0d3"), 1337);
+        test("Start Garbage", "words and 987", sol.myAtoiConstantSpace("words and 987"), 0);
+
+        // Edge cases: Signs and Zeros
+        test("Double Sign", "+-12", sol.myAtoiConstantSpace("+-12"), 0);
+        test("Leading Zeros", "00000-42a123", sol.myAtoiConstantSpace("00000-42a123"), 0);
+        test("Space After Sign", "  +  42", sol.myAtoiConstantSpace("  +  42"), 0);
+
+        // Overflow cases
+        test("Large Positive", "91283472332", sol.myAtoiConstantSpace("91283472332"), Integer.MAX_VALUE);
+        test("Large Negative", "-91283472332", sol.myAtoiConstantSpace("-91283472332"), Integer.MIN_VALUE);
+        test("Beyond Long Capacity", "20000000000000000000", sol.myAtoiConstantSpace("20000000000000000000"), Integer.MAX_VALUE);
     }
 
     private static void test(String name, String input, int result, int expected) {
