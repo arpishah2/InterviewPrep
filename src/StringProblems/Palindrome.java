@@ -3,6 +3,9 @@ package StringProblems;
 /*
  * A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward or forward
  * eg. aibohphobia, racecar
+ * Note: converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters. Alphanumeric characters include letters and numbers.
+
+
  */
 public class Palindrome {
 
@@ -14,6 +17,44 @@ public class Palindrome {
             System.out.println(s + " is StringProblems.Palindrome? " + p.checkPalindromeIter(s));
             System.out.println(s + " is StringProblems.Palindrome? " + p.checkPalindromeRev(s));
         }
+
+        String[] testCases = {
+                "A man, a plan, a canal: Panama",
+                "race a car",
+                " "
+        };
+        for (String testCase : testCases) {
+            boolean result = p.isPalindromeTwoPointers(testCase);
+            System.out.println("Input: \"" + testCase + "\"");
+            System.out.println("Output: " + result);
+            System.out.println("---");
+        }
+    }
+
+
+    public boolean isPalindromeTwoPointers(String s) {
+
+        if (s.length() == 0) {
+            return false;
+        }
+
+        for (int i = 0, j = s.length() - 1; i < j; i++, j--) {
+
+            //ignore non-alphanumeric characters
+            while (i < j && !Character.isLetterOrDigit(s.charAt(i))) {
+                i++;
+            }
+            while (i < j && !Character.isLetterOrDigit(s.charAt(j))) {
+                j--;
+            }
+
+            //comapre lower case version of character
+            if (Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j))) {
+                return false;
+            }
+        }
+        return true;
+
     }
 
     /**
