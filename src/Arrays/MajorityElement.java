@@ -47,6 +47,12 @@ public class MajorityElement {
      */
     public int majorityElementUsingMap(int[] nums) {
 
+
+        //While scanning the array, the counter is incremented if you encounter an element which is exactly same as the potential candidate but decremented otherwise.
+        // When the counter reaches zero, the element which will be encountered next will become the potential candidate.
+        // Keep doing this procedure while scanning the array.
+        // However, when you have exhausted the array, you have to make sure that the element recorded in the potential candidate variable is the majority element by checking whether it occurs more than ⌊n/2⌋ times in the array.
+
         // stores number and its frequency
         Map<Integer, Integer> noFrequencyMap = new HashMap<>();
 
