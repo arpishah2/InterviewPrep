@@ -18,7 +18,7 @@ public class MinHeap {
 
     }
 
-    //dispalys the top most element in heap - minimum elem
+    //displays the top most element in heap - minimum elem
     public int peek() {
         if (size == 0) throw new IllegalStateException();
         else return items[0];
@@ -42,7 +42,7 @@ public class MinHeap {
      * @return the item that is added
      */
     public void add(int item) {
-        ensureExtraCapaity();
+        ensureExtraCapacity();
         items[size] = item;
         size++;
         heapifyUp();
@@ -62,18 +62,17 @@ public class MinHeap {
 
     /*
      * places the element to the correct location by looking heap bottom from root
-     * item to be heapified is compared with the childs and swapped
+     * item to be heapified is compared with the children and swapped
      */
     public void heapifyDown() {
         int index = 0;
         while (hasLeftChild(index)) {
 
             int smallerChildIndex = getLeftChildIndex(index);
-            if (hasRightChild(index) && getRightChildIndex(index) < getLeftChild(index)) {
+            if (hasRightChild(index) && getRightChild(index) < getLeftChild(index)) {
                 //if right child is smaller than left child
                 smallerChildIndex = getRightChildIndex(index);
             }
-
 
             if (items[index] < items[smallerChildIndex])
                 break;
@@ -127,7 +126,7 @@ public class MinHeap {
         items[indexTwo] = temp;
     }
 
-    private void ensureExtraCapaity() {
+    private void ensureExtraCapacity() {
         if (size == capacity) {
             items = Arrays.copyOf(items, capacity * 2);
             capacity = capacity * 2;
