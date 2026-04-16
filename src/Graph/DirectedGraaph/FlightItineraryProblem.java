@@ -1,4 +1,4 @@
-package DirectedGraaph;/*
+package Graph.DirectedGraaph;/*
 Given a list of airline tickets represented by pairs of departure and arrival airports [from, to], reconstruct the itinerary in order. All of the tickets belong to a man who departs from JFK. Thus, the itinerary must begin with JFK.
 
 Note:
@@ -40,10 +40,10 @@ public class FlightItineraryProblem {
         FlightItineraryProblem obj = new FlightItineraryProblem(); //Create obj
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 		/*
-		tickets.add(new DirectedGraaph.Ticket("MUC", "LHR"));
-		tickets.add(new DirectedGraaph.Ticket("JFK", "MUC"));
-		tickets.add(new DirectedGraaph.Ticket("SFO", "SJC"));
-		tickets.add(new DirectedGraaph.Ticket("LHR", "SFO"));
+		tickets.add(new Graph.DirectedGraaph.Ticket("MUC", "LHR"));
+		tickets.add(new Graph.DirectedGraaph.Ticket("JFK", "MUC"));
+		tickets.add(new Graph.DirectedGraaph.Ticket("SFO", "SJC"));
+		tickets.add(new Graph.DirectedGraaph.Ticket("LHR", "SFO"));
 		//Return ["JFK", "MUC", "LHR", "SFO", "SJC"]
 		 */
         //cycles
@@ -101,7 +101,7 @@ public class FlightItineraryProblem {
     }
 
     /**
-     * @param arraylist of DirectedGraaph.Ticket[from,to] from input
+     * @param arraylist of Graph.DirectedGraaph.Ticket[from,to] from input
      *                  generate a directed cyclic graph from arraylist of input tickets
      */
     public Graph createGraph(ArrayList<Ticket> tickets) {

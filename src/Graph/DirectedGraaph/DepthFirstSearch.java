@@ -1,6 +1,6 @@
-package DirectedGraaph;/*
+package Graph.DirectedGraaph;/*
  * 
- * DirectedGraaph.DepthFirstSearch(DirectedGraaph.Vertex c)
+ * Graph.DirectedGraaph.DepthFirstSearch(Graph.DirectedGraaph.Vertex c)
 		If c is the goal
 			Exit
 		Else

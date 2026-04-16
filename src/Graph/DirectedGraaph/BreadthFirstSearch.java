@@ -1,4 +1,4 @@
-package DirectedGraaph;/*Some basic points
+package Graph.DirectedGraaph;/*Some basic points
  *
  * Note: traverses over directed graph
  *
@@ -60,7 +60,7 @@ public class BreadthFirstSearch {
     }
 
     /**
-     * @ABOUT gets the bfs path from the hashmap<DirectedGraaph.Vertex,from>
+     * @ABOUT gets the bfs path from the hashmap<Graph.DirectedGraaph.Vertex,from>
      */
     public HashMap<Object, Object> getBFSPath(Queue<Vertex> q, Vertex search, Vertex root, HashMap<Object, Object> hmap) {
         if (root.value == search.value)
@@ -83,7 +83,7 @@ public class BreadthFirstSearch {
     }
 
     /**
-     * @ABOUT gets the bfs path from the hashmap<DirectedGraaph.Vertex,from> and saves it in linked list
+     * @ABOUT gets the bfs path from the hashmap<Graph.DirectedGraaph.Vertex,from> and saves it in linked list
      */
     public LinkedList<Object> getLLBFSPath(HashMap<Object, Object> hmap, Object search, LinkedList<Object> ll) {
         if (hmap.containsKey(search) && search != null) {

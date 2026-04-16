@@ -1,4 +1,4 @@
-package DirectedGraaph;//Store DirectedGraaph.Graph as a list of Vertexes
+package Graph.DirectedGraaph;//Store Graph.DirectedGraaph.Graph as a list of Vertexes
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +12,15 @@ public class Graph {
     }
 
     public void printGraph() {
-        System.out.println("Tree.Node(visited)---weight(DirectedGraaph.Edge)---> OtherNode");
+        System.out.println("Tree.Node(visited)---weight(Graph.DirectedGraaph.Edge)---> OtherNode");
         System.out.println();
         for (Vertex v : vertexes) {
             System.out.print(v);
         }
     }
 	/*given arraylist of [from, to] generate graph
-	public DirectedGraaph.Graph generateGraph(){
-		//see method //public DirectedGraaph.Graph createGraph(ArrayList<DirectedGraaph.Ticket> tickets) //from  class DirectedGraaph.FlightItineraryProblem
+	public Graph.DirectedGraaph.Graph generateGraph(){
+		//see method //public Graph.DirectedGraaph.Graph createGraph(ArrayList<Graph.DirectedGraaph.Ticket> tickets) //from  class Graph.DirectedGraaph.FlightItineraryProblem
 	}*/
 
     public Vertex getVertex(String valueToSearch) {

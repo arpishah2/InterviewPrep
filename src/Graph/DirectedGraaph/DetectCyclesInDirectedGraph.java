@@ -1,4 +1,4 @@
-package DirectedGraaph;
+package Graph.DirectedGraaph;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -12,7 +12,7 @@ import java.util.Set;
 
 /*
  * Solution:
- * Depth First Traversal can be used to detect cycle in a DirectedGraaph.Graph.
+ * Depth First Traversal can be used to detect cycle in a Graph.DirectedGraaph.Graph.
  * DFS for a connected graph produces a tree.
  * There is a cycle in a graph only if there is a back edge present in the graph.
  * A back edge is an edge that is from a node to itself (selfloop) or one of its ancestor in the tree produced by DFS.

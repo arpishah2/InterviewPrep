@@ -1,4 +1,4 @@
-package DirectedGraaph;
+package Graph.DirectedGraaph;
 
 import java.util.ArrayList;
 import java.util.List;

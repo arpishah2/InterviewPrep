@@ -1,6 +1,6 @@
 package Hash;
 
-import DirectedGraaph.FlightItineraryProblem;
+import Graph.DirectedGraaph.FlightItineraryProblem;
 
 import java.util.HashMap;
 import java.util.Iterator;
