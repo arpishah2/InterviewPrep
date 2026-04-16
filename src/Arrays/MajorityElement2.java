@@ -41,9 +41,9 @@ public class MajorityElement2 {
         //we only need four variables: two for holding two potential candidates and two for holding two corresponding counters.
 
 
-        int majorityElement1 = -1;
+        Integer majorityElement1 = null;
         int element1Counter = 0;
-        int majorityElement2 = -1;
+        Integer majorityElement2 = null;
         int element2Counter = 0;
 
         for (int i = 0; i < nums.length; i++) {
@@ -52,9 +52,9 @@ public class MajorityElement2 {
 
             //If the current element is equal to one of the potential candidate, the count for that candidate is increased while leaving the count of the other candidate as it is.
             //If the counter reaches zero, the candidate associated with that counter will be replaced with the next element if the next element is not equal to the other candidate as well
-            if (currentElem == majorityElement1) {
+            if (majorityElement1 != null && currentElem == majorityElement1) {
                 element1Counter++;
-            } else if (currentElem == majorityElement2) {
+            } else if (majorityElement2 != null && currentElem == majorityElement2) {
                 element2Counter++;
             } else if (element1Counter == 0) {
                 majorityElement1 = currentElem;
@@ -75,10 +75,10 @@ public class MajorityElement2 {
         //2nd pass: when array is exhausted, we need to make sure that the element recorded as  potential candidates are the majority element by checking whether it occurs more than ⌊n/3⌋ times in the array.
         for (int i = 0; i < nums.length; i++) {
             int currentElem = nums[i];
-            if (majorityElement1 == currentElem) {
+            if (majorityElement1 != null && majorityElement1 == currentElem) {
                 count1++;
             }
-            if (majorityElement2 == currentElem) {
+            if (majorityElement2 != null && majorityElement2 == currentElem) {
                 count2++;
             }
         }
