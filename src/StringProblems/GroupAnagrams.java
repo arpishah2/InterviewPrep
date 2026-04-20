@@ -63,6 +63,7 @@ public class GroupAnagrams {
 
         if (inputStrings.length == 0) return new ArrayList();
 
+        //Hash to strings with same hash
         Map<String, List<String>> anagramGroup = new HashMap<>();
         int[] count = new int[26];
 

@@ -74,7 +74,6 @@ public class LongestSubstringWithoutRepeatingCharacters {
      *
      *
      */
-
     public int lengthOfLongestSubstring(String s) {
         Map<Character, Integer> charLastSeen = new HashMap<>();
         int maxLength = 0;
