@@ -61,7 +61,7 @@ public class ListOfDepths {
 
     }
 
-    public ArrayList<LinkedList<Integer>> createLLatEachdepth(BTNode root, ArrayList<LinkedList<Integer>> arr, int depth) {
+    public ArrayList<LinkedList<Integer>> createLLatEachdepth(TreeNode root, ArrayList<LinkedList<Integer>> arr, int depth) {
 
 
         if (root == null) {

@@ -18,6 +18,73 @@ import java.util.ArrayDeque;
  */
 public class SameTree {
 
+    private static boolean validateNodes(TreeNode p, TreeNode q) {
+        if (p == null && q == null) return true;
+        if (p == null || q == null) return false;
+        if (p.data != q.data) return false;
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        SameTree sol = new SameTree();
+
+        // TC1: Identical
+        TreeNode p1 = new TreeNode(10);
+        p1.left = new TreeNode(5);
+        p1.right = new TreeNode(15);
+        TreeNode q1 = new TreeNode(10);
+        q1.left = new TreeNode(5);
+        q1.right = new TreeNode(15);
+
+        // TC2: Structural Mismatch (Mirror shapes)
+        TreeNode p2 = new TreeNode(1);
+        p2.left = new TreeNode(2);
+        TreeNode q2 = new TreeNode(1);
+        q2.right = new TreeNode(2);
+
+        // TC3: Value Mismatch
+        TreeNode p3 = new TreeNode(1);
+        p3.left = new TreeNode(2);
+        p3.right = new TreeNode(1);
+        TreeNode q3 = new TreeNode(1);
+        q3.left = new TreeNode(1);
+        q3.right = new TreeNode(2);
+
+        // Header
+        System.out.println(String.format("%-25s | %-18s | %-18s | %-10s | %-10s",
+                "TEST CASE", "TREE P", "TREE Q", "RECURSE", "ITERATE"));
+        System.out.println("-".repeat(95));
+
+        runTest("TC1: Identical", p1, q1, sol, true);
+        runTest("TC2: Structure Fail", p2, q2, sol, false);
+        runTest("TC3: Value Fail", p3, q3, sol, false);
+        runTest("TC4: Empty Roots", null, null, sol, true);
+    }
+
+    private static void runTest(String name, TreeNode p, TreeNode q, SameTree sol, boolean expected) {
+        boolean resRec = sol.isSameTreeRecursion(p, q);
+        boolean resIter = sol.isSameTreeIteration(p, q);
+
+        // A test passes if both algorithms match the expected boolean result
+        boolean testPassed = (resRec == expected) && (resIter == expected);
+
+        System.out.println(String.format("%-22s | %-16s | %-16s | %-10s | %-10s | %-10s",
+                name,
+                treeToString(p),
+                treeToString(q),
+                resRec ? "MATCH ✅" : "DIFF ❌",
+                resIter ? "MATCH ✅" : "DIFF ❌",
+                testPassed ? "PASS 🏆" : "FAIL ⚠️"));
+    }
+
+    private static String treeToString(TreeNode root) {
+        if (root == null) return "null";
+        String l = (root.left != null) ? String.valueOf(root.left.data) : "n";
+        String r = (root.right != null) ? String.valueOf(root.right.data) : "n";
+        return "[" + root.data + "," + l + "," + r + "]";
+    }
+
     /**
      * Recursively checks if two binary trees are identical in structure and values.
      *
@@ -51,7 +118,7 @@ public class SameTree {
      * Time complexity : O(N),
      * Space complexity : O(N) in the worst case of completely unbalanced tree, to keep a recursion stack.
      */
-    public boolean isSameTreeRecursion(BTNode p, BTNode q) {
+    public boolean isSameTreeRecursion(TreeNode p, TreeNode q) {
         if (p == null && q == null) {
             return true;
         }
@@ -91,15 +158,15 @@ public class SameTree {
      * @complexity Time: O(N) where N is the number of nodes.
      * @complexity Space: O(W) where W is the maximum width of the tree.
      */
-    public boolean isSameTreeIteration(BTNode p, BTNode q) {
+    public boolean isSameTreeIteration(TreeNode p, TreeNode q) {
 
         if (!validateNodes(p, q)) return false;
         if (p == null) return true;
 
-        ArrayDeque<BTNode> pDeque = new ArrayDeque<>();
+        ArrayDeque<TreeNode> pDeque = new ArrayDeque<>();
         pDeque.addLast(p);
 
-        ArrayDeque<BTNode> qDeque = new ArrayDeque<>();
+        ArrayDeque<TreeNode> qDeque = new ArrayDeque<>();
         qDeque.addLast(q);
 
         while (!pDeque.isEmpty()) {
@@ -124,72 +191,5 @@ public class SameTree {
             }
         }
         return true;
-    }
-
-    private static boolean validateNodes(BTNode p, BTNode q) {
-        if (p == null && q == null) return true;
-        if (p == null || q == null) return false;
-        if (p.data != q.data) return false;
-
-        return true;
-    }
-
-    public static void main(String[] args) {
-        SameTree sol = new SameTree();
-
-        // TC1: Identical
-        BTNode p1 = new BTNode(10);
-        p1.left = new BTNode(5);
-        p1.right = new BTNode(15);
-        BTNode q1 = new BTNode(10);
-        q1.left = new BTNode(5);
-        q1.right = new BTNode(15);
-
-        // TC2: Structural Mismatch (Mirror shapes)
-        BTNode p2 = new BTNode(1);
-        p2.left = new BTNode(2);
-        BTNode q2 = new BTNode(1);
-        q2.right = new BTNode(2);
-
-        // TC3: Value Mismatch
-        BTNode p3 = new BTNode(1);
-        p3.left = new BTNode(2);
-        p3.right = new BTNode(1);
-        BTNode q3 = new BTNode(1);
-        q3.left = new BTNode(1);
-        q3.right = new BTNode(2);
-
-        // Header
-        System.out.println(String.format("%-25s | %-18s | %-18s | %-10s | %-10s",
-                "TEST CASE", "TREE P", "TREE Q", "RECURSE", "ITERATE"));
-        System.out.println("-".repeat(95));
-
-        runTest("TC1: Identical", p1, q1, sol, true);
-        runTest("TC2: Structure Fail", p2, q2, sol, false);
-        runTest("TC3: Value Fail", p3, q3, sol, false);
-        runTest("TC4: Empty Roots", null, null, sol, true);
-    }
-
-    private static void runTest(String name, BTNode p, BTNode q, SameTree sol, boolean expected) {
-        boolean resRec = sol.isSameTreeRecursion(p, q);
-        boolean resIter = sol.isSameTreeIteration(p, q);
-
-        // A test passes if both algorithms match the expected boolean result
-        boolean testPassed = (resRec == expected) && (resIter == expected);
-
-        System.out.println(String.format("%-22s | %-16s | %-16s | %-10s | %-10s | %-10s",
-                name,
-                treeToString(p),
-                treeToString(q),
-                resRec ? "MATCH ✅" : "DIFF ❌",
-                resIter ? "MATCH ✅" : "DIFF ❌",
-                testPassed ? "PASS 🏆" : "FAIL ⚠️"));
-    }
-
-    private static String treeToString(BTNode root) {
-        if (root == null) return "null";
-        String l = (root.left != null) ? String.valueOf(root.left.data) : "n";
-        String r = (root.right != null) ? String.valueOf(root.right.data) : "n";
-        return "[" + root.data + "," + l + "," + r + "]";
     }
 }

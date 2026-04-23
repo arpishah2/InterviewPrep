@@ -7,13 +7,13 @@ public class CheckBalanced {
     public static void main(String args[]) {
         BT bt = new BT();
         bt.createSampleTree();
-        BTNode root = bt.root; //contains root of sample Binary Tree.Tree
+        TreeNode root = bt.root; //contains root of sample Binary Tree.Tree
         CheckBalanced chk = new CheckBalanced();
         System.out.println(chk.isBalanced(root));
 
     }
 
-    public int height(BTNode root) { //returns height of a node in tree
+    public int height(TreeNode root) { //returns height of a node in tree
         if (root == null)
             return 0;
         else {
@@ -23,7 +23,7 @@ public class CheckBalanced {
         }
     }
 
-    public boolean isBalanced(BTNode root) {
+    public boolean isBalanced(TreeNode root) {
         if (root == null)
             return true;
         int leftHeight = height(root.left);

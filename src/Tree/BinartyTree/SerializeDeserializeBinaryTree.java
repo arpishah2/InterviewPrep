@@ -16,18 +16,18 @@ import java.util.Queue;
 public class SerializeDeserializeBinaryTree {
 
 
-    public String serializeBFSIterative(BTNode root) {
+    public String serializeBFSIterative(TreeNode root) {
         StringBuilder result = new StringBuilder();
         if (root == null) {
             result.append(" null ");
             return result.toString();
         }
 
-        Queue<BTNode> bfsQueue = new LinkedList<>();
+        Queue<TreeNode> bfsQueue = new LinkedList<>();
         bfsQueue.add(root);
 
         while (!bfsQueue.isEmpty()) {
-            BTNode node = bfsQueue.poll();
+            TreeNode node = bfsQueue.poll();
 
             if (node == null) {
                 result.append(" None ,");
@@ -49,12 +49,12 @@ public class SerializeDeserializeBinaryTree {
      * Encodes a tree to a single string.
      * The preorder DFS traverse follows recursively the order of root -> left subtree -> right subtree.
      */
-    public String serializeDFSPreOrder(BTNode root) {
+    public String serializeDFSPreOrder(TreeNode root) {
         return reserialize(root, "");
     }
 
     // Encodes a tree to a single string.
-    private String reserialize(BTNode root, String result) {
+    private String reserialize(TreeNode root, String result) {
         if (root == null) {
             return result + "null";
         } else {
@@ -67,19 +67,19 @@ public class SerializeDeserializeBinaryTree {
 
 
     // Decodes your encoded data to tree.
-    private BTNode deserializePreOrder(String input) {
+    private TreeNode deserializePreOrder(String input) {
         String[] data_array = input.split(",");
         List<String> data_list = new LinkedList<>(Arrays.asList(data_array));
         return redeserialize(data_list);
     }
 
-    public BTNode redeserialize(List<String> dataList) {
+    public TreeNode redeserialize(List<String> dataList) {
         // Recursive deserialization.
         if (dataList.get(0).equals("null")) {
             dataList.remove(0);
             return null;
         } else {
-            BTNode root = new BTNode(Integer.valueOf(dataList.get(0)));
+            TreeNode root = new TreeNode(Integer.valueOf(dataList.get(0)));
             dataList.remove(0);
             root.left = redeserialize(dataList);
             root.right = redeserialize(dataList);

@@ -63,15 +63,15 @@ import java.util.Queue;
  */
 public class BT {
 
-    BTNode root;
+    TreeNode root;
 
     public BT() {
-        root = new BTNode(0);
+        root = new TreeNode(0);
     }
 
     public BT(int data) {
         //create root with value 0
-        root = new BTNode(data);
+        root = new TreeNode(data);
     }
 
     /**
@@ -81,9 +81,9 @@ public class BT {
      * @param left  reference to left child node
      * @param right reference to right child node
      */
-    public BT(int data, BTNode left, BTNode right) {
+    public BT(int data, TreeNode left, TreeNode right) {
         //create root with value 0
-        root = new BTNode(data, left, right);
+        root = new TreeNode(data, left, right);
     }
 
     public static void main(String[] args) {
@@ -109,13 +109,13 @@ public class BT {
 
     public void createSampleTree() {
 
-        BTNode g = new BTNode(40);
-        BTNode c = new BTNode(20, g, null);
-        BTNode d = new BTNode(25);
-        BTNode e = new BTNode(30);
-        BTNode f = new BTNode(35);
-        BTNode a = new BTNode(10, c, d);
-        BTNode b = new BTNode(15, e, f);
+        TreeNode g = new TreeNode(40);
+        TreeNode c = new TreeNode(20, g, null);
+        TreeNode d = new TreeNode(25);
+        TreeNode e = new TreeNode(30);
+        TreeNode f = new TreeNode(35);
+        TreeNode a = new TreeNode(10, c, d);
+        TreeNode b = new TreeNode(15, e, f);
         this.root.data = 5;
         this.root.left = a;
         this.root.right = b;
@@ -127,7 +127,7 @@ public class BT {
      *
      * @param root current node in recursion
      */
-    public void inOrderTraversal(BTNode root) {
+    public void inOrderTraversal(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -141,7 +141,7 @@ public class BT {
      * Useful for creating a copy of the tree or prefix expressions.
      * @param root current node in recursion
      */
-    public void preOrderTraversal(BTNode root) {
+    public void preOrderTraversal(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -155,7 +155,7 @@ public class BT {
      * Useful for deleting trees or postfix expressions.
      * @param root current node in recursion
      */
-    public void postOrderTraversal(BTNode root) {
+    public void postOrderTraversal(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -170,13 +170,13 @@ public class BT {
      *
      * @param root starting node (usually tree root)
      */
-    public void breadthFirstTraversal(BTNode root) {
-        Queue<BTNode> q = new LinkedList<BTNode>();  //Take a Empty Queue.
+    public void breadthFirstTraversal(TreeNode root) {
+        Queue<TreeNode> q = new LinkedList<TreeNode>();  //Take a Empty Queue.
         if (root == null) return;        //If root is empty, no further processing
         q.add(root);                    //Start from the root, insert the root into the Queue
 
         while (!q.isEmpty()) {            //Now while Queue is not empty
-            BTNode n = q.remove();        //Extract the node from the Queue
+            TreeNode n = q.remove();        //Extract the node from the Queue
             System.out.print(n.data + " "); //Print the extracted node.
             if (n.left != null)            // insert all its chil­dren into the Queue
                 q.add(n.left);
@@ -190,7 +190,7 @@ public class BT {
      * @param rootNode current node to print
      * @param count depth level for indentation
      */
-    public void printTree(BTNode rootNode, int count) {
+    public void printTree(TreeNode rootNode, int count) {
 
         for (int i = 0; i < count; i++) {
             System.out.print("\t");
