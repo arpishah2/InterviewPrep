@@ -63,6 +63,34 @@ public class SameTree {
         return p.data == q.data && isSameTreeRecursion(p.left, q.left) && isSameTreeRecursion(p.right, q.right);
     }
 
+    /**
+     * Checks if two binary trees are identical using an iterative Breadth-First Search (BFS) approach.
+     * This method uses a Queue (ArrayDeque) to compare nodes level by level.
+     *
+     * <h3>🔄 ITERATIVE MATCH TRACE (Level-Order)</h3>
+     * <pre>
+     * | Step | Node P | Node Q | Action / Queue Logic                | Result          |
+     * |------|--------|--------|-------------------------------------|-----------------|
+     * | 1    | 10     | 10     | Roots match. Add children to Deque. | Proceed ✅      |
+     * | 2    | 5      | 5      | Pop (5,5). Match. Children are null.| Proceed ✅      |
+     * | 3    | 15     | 15     | Pop (15,15). Match. Add nulls check.| Proceed ✅      |
+     * | 4    | null   | null   | validateNodes(null, null)           | True ✅         |
+     * | 5    | [DONE] | [DONE] | Deque is empty.                     | IDENTICAL 🏆    |
+     * </pre>
+     *
+     * <h3>📍 IMPLEMENTATION DETAILS</h3>
+     * <ul>
+     *   <li><b>ArrayDeque:</b> Used as a Queue. <i>Note: Does not allow null elements.</i></li>
+     *   <li><b>validateNodes:</b> Helper method to check both structural and value equality.</li>
+     *   <li><b>Guard:</b> <code>if (p.left != null)</code> ensures we only add non-null nodes to the Deque.</li>
+     * </ul>
+     *
+     * @param p Root of the first tree
+     * @param q Root of the second tree
+     * @return true if trees are identical, false otherwise
+     * @complexity Time: O(N) where N is the number of nodes.
+     * @complexity Space: O(W) where W is the maximum width of the tree.
+     */
     public boolean isSameTreeIteration(BTNode p, BTNode q) {
 
         if (!validateNodes(p, q)) return false;
