@@ -10,14 +10,28 @@ public class LL {
 
     public static void main(String args[]) {
         LL ll = new LL();
+
+
+        System.out.println("\nExecuting: createSampleLL()...");
         ll.createSampleLL();
+
+        System.out.println("\nExecuting: addElemEnd(7)...");
         ll.addElemEnd(7);
+
+        System.out.println("\nExecuting: addElemAtPos(4, 4)...");
         ll.addElemAtPos(4, 4);
+
+        System.out.println("\nExecuting: addElemBeg(-1)...");
         ll.addElemBeg(-1);
+
+        System.out.println("\nExecuting: delElemEnd()...");
         ll.delElemEnd();
+
+        System.out.println("\nExecuting: delElemFromBeg()...");
         ll.delElemFromBeg();
+
+        System.out.println("\nExecuting: delElemFromPos(4)...");
         ll.delElemFromPos(4);
-        ll.createSampleLLLoop();
 
     }
 
@@ -27,6 +41,7 @@ public class LL {
         while (temp != null) {
             if (temp.data == value)
                 return true;
+            temp = temp.next;
         }
         return false;
     }
@@ -42,7 +57,7 @@ public class LL {
         return start;
     }
 
-    //add element at begining
+    //add element at beginning
     public LLNode addElemBeg(int value) {
         LLNode newNode = new LLNode(value);
         LLNode temp = start;
@@ -110,7 +125,6 @@ public class LL {
 
     //display linked list
     public void displayLL() {
-        System.out.println("LinkedList.LL is:");
         LLNode temp = this.start;
         while (temp != null) {
             System.out.print(temp.data + " -> ");
