@@ -21,7 +21,7 @@ public class SameTree {
     private static boolean validateNodes(TreeNode p, TreeNode q) {
         if (p == null && q == null) return true;
         if (p == null || q == null) return false;
-        if (p.data != q.data) return false;
+        if (p.val != q.val) return false;
 
         return true;
     }
@@ -80,9 +80,9 @@ public class SameTree {
 
     private static String treeToString(TreeNode root) {
         if (root == null) return "null";
-        String l = (root.left != null) ? String.valueOf(root.left.data) : "n";
-        String r = (root.right != null) ? String.valueOf(root.right.data) : "n";
-        return "[" + root.data + "," + l + "," + r + "]";
+        String l = (root.left != null) ? String.valueOf(root.left.val) : "n";
+        String r = (root.right != null) ? String.valueOf(root.right.val) : "n";
+        return "[" + root.val + "," + l + "," + r + "]";
     }
 
     /**
@@ -127,7 +127,7 @@ public class SameTree {
             return false;
         }
 
-        return p.data == q.data && isSameTreeRecursion(p.left, q.left) && isSameTreeRecursion(p.right, q.right);
+        return p.val == q.val && isSameTreeRecursion(p.left, q.left) && isSameTreeRecursion(p.right, q.right);
     }
 
     /**

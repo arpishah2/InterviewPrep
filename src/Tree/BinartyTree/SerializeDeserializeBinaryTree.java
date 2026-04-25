@@ -32,7 +32,7 @@ public class SerializeDeserializeBinaryTree {
             if (node == null) {
                 result.append(" None ,");
             } else {
-                result.append(node.data);
+                result.append(node.val);
                 result.append(" , ");
 
                 bfsQueue.add(root.left);
@@ -58,7 +58,7 @@ public class SerializeDeserializeBinaryTree {
         if (root == null) {
             return result + "null";
         } else {
-            result += root.data + " , ";
+            result += root.val + " , ";
             reserialize(root.left, result);
             reserialize(root.right, result);
         }

@@ -116,7 +116,7 @@ public class BT {
         TreeNode f = new TreeNode(35);
         TreeNode a = new TreeNode(10, c, d);
         TreeNode b = new TreeNode(15, e, f);
-        this.root.data = 5;
+        this.root.val = 5;
         this.root.left = a;
         this.root.right = b;
     }
@@ -132,7 +132,7 @@ public class BT {
             return;
         }
         inOrderTraversal(root.left);
-        System.out.print(root.data + "\t");
+        System.out.print(root.val + "\t");
         inOrderTraversal(root.right);
     }
 
@@ -145,7 +145,7 @@ public class BT {
         if (root == null) {
             return;
         }
-        System.out.print(root.data + "\t");
+        System.out.print(root.val + "\t");
         preOrderTraversal(root.left);
         preOrderTraversal(root.right);
     }
@@ -161,7 +161,7 @@ public class BT {
         }
         postOrderTraversal(root.left);
         postOrderTraversal(root.right);
-        System.out.print(root.data + "\t");
+        System.out.print(root.val + "\t");
     }
 
     /**
@@ -177,7 +177,7 @@ public class BT {
 
         while (!q.isEmpty()) {            //Now while Queue is not empty
             TreeNode n = q.remove();        //Extract the node from the Queue
-            System.out.print(n.data + " "); //Print the extracted node.
+            System.out.print(n.val + " "); //Print the extracted node.
             if (n.left != null)            // insert all its chil­dren into the Queue
                 q.add(n.left);
             if (n.right != null)
@@ -200,7 +200,7 @@ public class BT {
             System.out.println("null");
             return;
         }
-        System.out.print(rootNode.data + " \n");
+        System.out.print(rootNode.val + " \n");
         printTree(rootNode.left, count);
         printTree(rootNode.right, count);
 

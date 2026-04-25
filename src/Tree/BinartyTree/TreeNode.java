@@ -2,24 +2,24 @@ package Tree.BinartyTree;
 
 public class TreeNode {
 
-    int data;
+    int val;
     TreeNode left;
     TreeNode right;
 
     public TreeNode() {
-        data = 0;
+        val = 0;
         left = null;
         right = null;
     }
 
     public TreeNode(int data) {
-        this.data = data;
+        this.val = data;
         left = null;
         right = null;
     }
 
     public TreeNode(int data, TreeNode left, TreeNode right) {
-        this.data = data;
+        this.val = data;
         this.left = left;
         this.right = right;
     }

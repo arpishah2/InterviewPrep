@@ -112,7 +112,7 @@ public class MaxDepthOfBinaryTree {
         }
         displayTree(root.right, level + 1);
         for (int i = 0; i < level; i++) System.out.print("\t");
-        System.out.println(root.data);
+        System.out.println(root.val);
         displayTree(root.left, level + 1);
     }
 

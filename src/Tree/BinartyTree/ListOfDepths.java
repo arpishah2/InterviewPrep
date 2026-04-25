@@ -74,11 +74,11 @@ public class ListOfDepths {
 
         if (arr.size() <= depth) {
             atPos = new LinkedList<Integer>();
-            atPos.add(root.data);
+            atPos.add(root.val);
             arr.add(depth, atPos); //add if no value exists
         } else {
             atPos = arr.get(depth);
-            atPos.add(root.data);
+            atPos.add(root.val);
             arr.set(depth, atPos); //replace already contained value with new val
         }
 
